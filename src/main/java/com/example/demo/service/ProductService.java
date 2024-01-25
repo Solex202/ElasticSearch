@@ -19,4 +19,16 @@ public class ProductService {
         productRepository.findAll().forEach(products::add);
         return products;
     }
+
+    public Product getProductById(int id) {
+        return productRepository.findById(id).get();
+    }
+
+    public void saveOrUpdate(Product product) {
+        productRepository.save(product);
+    }
+
+    public void delete(int id) {
+        productRepository.deleteById(id);
+    }
 }
