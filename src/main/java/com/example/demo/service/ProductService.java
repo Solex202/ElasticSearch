@@ -2,17 +2,18 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Product;
 import com.example.demo.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
+
+    private final ProductRepository productRepository;
 
     public List<Product> getAllProducts() {
         List<Product> products = new ArrayList<>();
@@ -20,7 +21,7 @@ public class ProductService {
         return products;
     }
 
-    public Product getProductById(int id) {
+    public Product getProductById(String id) {
         return productRepository.findById(id).get();
     }
 
@@ -28,7 +29,7 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public void delete(int id) {
+    public void delete(String id) {
         productRepository.deleteById(id);
     }
 }
